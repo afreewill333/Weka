@@ -1,6 +1,8 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import weka.core.*;
+import weka.core.converters.ArffSaver;
 
  
  /**
@@ -104,5 +106,11 @@ import weka.core.*;
  
      // 4. output data
      System.out.println(data);
+     
+     // 5. Save Instances to an ARFF File
+     ArffSaver saver = new ArffSaver();
+     saver.setInstances(data);
+     saver.setFile(new File("test.arff"));
+     saver.writeBatch();
    }
  }
