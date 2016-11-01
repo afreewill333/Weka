@@ -65,7 +65,14 @@ public class WekaApriori {
 		 
 		 Apriori apriori = new Apriori();
 		 apriori.buildAssociations(trainingSet);
-	 
+		 
+		 List[] listArray = apriori.getAllTheRules();
+		 for(List list: listArray){
+			 for(Object o: list){
+				 System.out.print(o+"\t");
+			 }
+			 System.out.println();
+		 }
 
 		 System.out.println("-------------apriori-------------");
 		 System.out.println(apriori);
