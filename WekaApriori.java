@@ -58,6 +58,10 @@ public class WekaApriori {
 		 inst.setValue(featureVector.get(1), "gray");
 		 inst.setValue(featureVector.get(2), "positive");
 		 trainingSet.add(inst);
+		 /*-----age---------color---------class-----*/
+		 /*-----29 ---------gray ---------posit-----*/
+		 /*-----29 ---------gray ---------posit-----*/
+		 /*-----19 ---------gray ---------posit-----*/
 		 
 		 Discretize discretize = new Discretize();
 		 //String[] options = new String[4];
@@ -75,20 +79,21 @@ public class WekaApriori {
 		 List[] listArray = apriori.getAllTheRules();
 		 AssociationRules ars=apriori.getAssociationRules();
 		 for(AssociationRule ar:ars.getRules()){
-			 for(Item i:ar.getPremise()){
-				 System.out.println(i.getAttribute().index());/* important!  index of wordvec*/
-				 System.out.println(i.getAttribute().getRevision());
-				 System.out.println(i.getAttribute().name());/* important! name of feature namely:word */
-				 System.out.println(i.getAttribute().numValues());
-				 System.out.println(i.getAttribute().getClass());
-				 //System.out.print(i.getClass()+"\t"+i.getAttribute());
-				 System.out.println(i.toString());
-				 System.out.println(i.getComparisonAsString());
-				 System.out.println(i.getFrequency());
-				 System.out.println(i.getClass());
-				 System.out.println(i.getItemValueAsString());
+			 //System.out.println("Support:"+ar.getPremiseSupport());/* bad choice */
+			 System.out.println("Support:"+ar.getConsequenceSupport());
+			 
+			 for(Item i:ar.getConsequence()){
+				 //System.out.print(i.getAttribute().index());/* important!  index of wordvec*/
+				 //System.out.println(i.getAttribute().getRevision());
+				 System.out.print(i.getAttribute().name()+"#");/* important! name of feature namely:word */
+				 //System.out.println(i.getAttribute().numValues());
+				 //System.out.println(i.getAttribute().getClass());
+				 ////System.out.print(i.getClass()+"\t"+i.getAttribute());
+				 //System.out.println(i.toString());
+				 //System.out.println(i.getFrequency());
+				 System.out.print(i.getItemValueAsString()+"\t");
 			 }
-			 System.out.println("------END");
+			 System.out.println("\n------------END------------");
 		 }
 		 
 //		 for(List list: listArray){
