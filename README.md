@@ -2,6 +2,12 @@
 weka 
 
 
+http://forums.pentaho.com/archive/index.php/t-62321.html        
+
+Yes. If you are using the development version of Weka (3.5.x), you can call the method getAllTheRules(). This method returns a three (or up to six if the measure selected is not confidence) element array of FastVectors. The first FastVector contains all the antecedent large itemsets (i.e. left-hand sides of the rules) and the second FastVector contains all the consequent large itemsets (i.e. right-hand sides of the rules). The third FastVector contains the confidence scores (wrapped up in Double classes). The remaining three FastVectors (if measure other than confidence is selected) contain lift, leverage and conviction scores (wrapped in Doubles) respectively. The elements of the FastVectors are ordered in terms of support and metric in question.
+
+
+
 http://weka.wikispaces.com/Programmatic+Use
 
 
