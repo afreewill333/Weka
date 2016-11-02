@@ -72,11 +72,10 @@ public class WekaApriori {
 		 trainingSet=Filter.useFilter(trainingSet,discretize);
 		 
 		 Apriori apriori = new Apriori();
+		 apriori.setLowerBoundMinSupport(1);
+		 apriori.setUpperBoundMinSupport(2);
 		 apriori.buildAssociations(trainingSet);
-		 
-		 AprioriItemSet set = new AprioriItemSet(0);
-		 
-		 List[] listArray = apriori.getAllTheRules();
+		 		 
 		 AssociationRules ars=apriori.getAssociationRules();
 		 for(AssociationRule ar:ars.getRules()){
 			 //System.out.println("Support:"+ar.getPremiseSupport());/* bad choice */
@@ -95,13 +94,7 @@ public class WekaApriori {
 			 }
 			 System.out.println("\n------------END------------");
 		 }
-		 
-//		 for(List list: listArray){
-//			 for(Object o: list){
-//				 System.out.print(o+"\t");
-//			 }
-//			 System.out.println();
-//		 }
+
 //
 //		 System.out.println("-------------apriori-------------");
 //		 System.out.println(apriori);
