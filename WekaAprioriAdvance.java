@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
 import weka.associations.Apriori;
 import weka.associations.AssociationRule;
 import weka.associations.AssociationRules;
 import weka.associations.Item;
+import weka.associations.ItemSet;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
@@ -85,10 +87,10 @@ public class WekaAprioriAdvance {
 		 
 		 Apriori apriori = new Apriori();
 		 String[] options = new String[4];
-		 options[0]="-C";options[1]="0.9";
+		 options[0]="-C";options[1]="0.5";
 		 options[2]="-M";options[3]="0.1";
 		 apriori.setOptions(options);
-		 apriori.setOutputItemSets(true);
+		 //apriori.setOutputItemSets(true);
 		 apriori.buildAssociations(dataset);
 		 
 		 		 
@@ -106,7 +108,7 @@ public class WekaAprioriAdvance {
 			 for(Item i:ar.getPremise()){
 				 //System.out.print(i.getAttribute().index());/* important!  index of wordvec*/
 				 //System.out.println(i.getAttribute().getRevision());
-				 System.out.print(i.getAttribute().name()+"#");/* important! name of feature namely:word */
+				 System.out.print(i.getAttribute().name()+" : ");/* important! name of feature namely:word */
 				 //System.out.println(i.getAttribute().numValues());
 				 //System.out.println(i.getAttribute().getClass());
 				 ////System.out.print(i.getClass()+"\t"+i.getAttribute());
@@ -117,11 +119,21 @@ public class WekaAprioriAdvance {
 			 System.out.println("\n------------END------------");
 		 }
 
-//
+
 //		 System.out.println("-------------apriori-------------");
-		 System.out.println(apriori);
+		 System.out.println(apriori.toString());
 //		 System.out.println("-------------apriori-------------");
 		 
+		 List[] rules = apriori.getAllTheRules();
+		 ItemSet premises= (ItemSet)rules[0].get(0);
+		 ItemSet consequences = (ItemSet)rules[1].get(0);
+		 Double confidence = (Double)rules[2].get(0);
+		 
+		 ItemSet itemset = (ItemSet)rules[0].get(1);
+		 for(int idx : itemset.items()){
+			 System.out.print(idx+"\t");
+		 }
+
 		 
 	}
 
