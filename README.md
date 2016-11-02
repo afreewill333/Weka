@@ -10,6 +10,7 @@ Yes. If you are using the development version of Weka (3.5.x), you can call the 
 
 http://weka.wikispaces.com/Programmatic+Use
 
+http://www.cnblogs.com/nwf5d/archive/2011/05/11/2042786.html
 
 How to get associations rules programmatically from Weka Aproiri Object
 MAY 28, 2014PIYUSHDANE29
